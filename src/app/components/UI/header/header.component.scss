@@ -1,0 +1,28 @@
+mat-toolbar{
+  background-color: #233F8B;
+  color: white;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  &.button {
+    margin-left: 10px;
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+}
+.no-select {
+  cursor: pointer;
+  user-select: none;
+}
+.example-header-image {
+  background-color: white;
+  background-image: url('https://top20.ua/media-resize/company_large/image_500x500.png%3Fapi-version=2-361001.png?timestamp=1568715615');
+  background-size: cover;
+  margin: 0 10px 0 0;
+}
+
