@@ -31,6 +31,7 @@ export class DialogBoxComponent {
     this.data = {
       title: this.myForm.value.title,
       price: this.myForm.value.price,
+      img: "assets/img/govyazhii.jpeg",
       description: this.myForm.value.description,
       details: {
         ketchup: this.myForm.value.ketchup,
