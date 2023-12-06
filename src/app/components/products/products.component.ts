@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {IProducts} from "../../models/products";
 import {Subscription} from "rxjs";
 import {ProductsService} from "../../services/products.service";
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DialogBoxComponent} from "../dialog-box/dialog-box.component";
 
 @Component({
@@ -19,14 +19,21 @@ export class ProductsComponent implements OnInit{
   constructor (private ProductsService: ProductsService, public dialog: MatDialog) {
   }
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogBoxComponent, {
-      width: '500px',
-      data: 123
-    });
+    let dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.disableClose = true;
+    const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe((data) => this.postData(data));
+  }
+
+  postData(data: IProducts){
+    console.log(data);
+    this.ProductsService.postProduct(data).subscribe((data) => this.products.push(data));
+  }
+
+  ngOnDestroy(): void {
+    if (this.productSubscription) this.productSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
