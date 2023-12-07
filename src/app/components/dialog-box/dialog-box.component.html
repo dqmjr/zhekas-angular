@@ -24,6 +24,6 @@
     <input matInput formControlName="sauce">
   </mat-form-field>
 
-  <button mat-button color="primary" type="submit">Добавить</button>
-  <button mat-button color="primary" (click)="onNoClick()">Отмена</button>
+  <button mat-button color="primary" type="submit">{{ isNew ? 'Добавить' : 'Обновить' }}</button>
+  <button mat-button color="primary" (click)="onNoClick()" type="button">Отмена</button>
 </form>

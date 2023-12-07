@@ -18,17 +18,24 @@ export class ProductsComponent implements OnInit{
 
   constructor (private ProductsService: ProductsService, public dialog: MatDialog) {
   }
-  openDialog(): void {
+  openDialog(product?: IProducts): void {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px';
     dialogConfig.disableClose = true;
+    dialogConfig.data = product;
     const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe((data) => this.postData(data));
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.id) {
+        this.UpdateProduct(data);
+      }
+      else {
+        this.postData(data)
+      }
+    });
   }
 
   postData(data: IProducts){
-    console.log(data);
     this.ProductsService.postProduct(data).subscribe((data) => this.products.push(data));
   }
 
@@ -45,7 +52,6 @@ export class ProductsComponent implements OnInit{
   }
 
   deleteData(id:number) {
-    console.log(id);
     this.ProductsService.deleteProduct(id).subscribe(() => this.products.find( (item) => {
       if (id === item.id){
         let idx:number = this.products.findIndex((data) => data.id === id);
@@ -54,5 +60,12 @@ export class ProductsComponent implements OnInit{
     }));
   }
 
-
+  UpdateProduct(product: IProducts) {
+    this.ProductsService.UpdateProduct(product).subscribe((data) => {
+      this.products = this.products.map((product) => {
+        if (product.id === data.id) return data
+        else return product
+      })
+    });
+  }
 }

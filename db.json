@@ -1,38 +1,16 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "Донер говяжий",
-      "price": 1200,
-      "description": "Ингредиенты для шаурмы с говядиной по-домашнему. Сначала приготовим соус. · Смешать кетчуп, майонез и чеснок · Нарезать капусту и огурцы · Обжарить мясо с луком.",
+      "id": 2,
+      "title": "Doner",
+      "price": "1222",
       "img": "assets/img/govyazhii.jpeg",
+      "description": "dwadawdaw",
       "details": {
-        "weight": 500,
-        "ketchup": true,
-        "sauce": true
+        "ketchup": "1",
+        "sauce": "0",
+        "weight": "22"
       }
-    },
-    {
-      "title": "dw",
-      "price": "",
-      "img": "assets/img/govyazhii.jpeg",
-      "description": "",
-      "details": {
-        "ketchup": "",
-        "sauce": ""
-      },
-      "id": 2
-    },
-    {
-      "title": "eqwdaw",
-      "price": "",
-      "img": "assets/img/govyazhii.jpeg",
-      "description": "",
-      "details": {
-        "ketchup": "",
-        "sauce": ""
-      },
-      "id": 4
     }
   ]
 }

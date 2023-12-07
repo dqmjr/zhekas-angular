@@ -8,5 +8,6 @@ export interface IProducts {
 }
 export interface IProductDetails {
   "ketchup": boolean,
-  "sauce": boolean
+  "sauce": boolean,
+  "weight": number
 }
