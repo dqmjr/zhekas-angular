@@ -7,6 +7,7 @@ import {IProducts} from "../models/products";
 })
 export class ProductsService {
   url: string = 'http://localhost:3000/products';
+  urlBasket: string = 'http://localhost:3000/basket';
   constructor(private http:HttpClient) { }
 
   getProducts() {
@@ -24,5 +25,17 @@ export class ProductsService {
   }
   UpdateProduct(product: IProducts) {
     return this.http.put<IProducts>(`${this.url}/${product.id}`, product);
+  }
+  postProductToBasket(product: IProducts) {
+    return this.http.post<IProducts>(this.urlBasket, product);
+  }
+  getProductsFromBasket() {
+    return this.http.get<IProducts[]>(this.urlBasket);
+  }
+  UpdateProductToBasket(product: IProducts) {
+    return this.http.put<IProducts>(`${this.urlBasket}/${product.id}`, product);
+  }
+  deleteProductFromBasket(id:number){
+    return this.http.delete<any>(`${this.urlBasket}/${id}`);
   }
 }

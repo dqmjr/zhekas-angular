@@ -11,6 +11,33 @@
         "sauce": "0",
         "weight": "22"
       }
+    },
+    {
+      "id": 3,
+      "title": "qwe",
+      "price": "",
+      "img": "assets/img/govyazhii.jpeg",
+      "description": "",
+      "details": {
+        "ketchup": "",
+        "sauce": "",
+        "weight": ""
+      }
+    }
+  ],
+  "basket": [
+    {
+      "id": 3,
+      "title": "qwe",
+      "price": "",
+      "img": "assets/img/govyazhii.jpeg",
+      "description": "",
+      "details": {
+        "ketchup": "",
+        "sauce": "",
+        "weight": ""
+      },
+      "quantity": 3
     }
   ]
 }

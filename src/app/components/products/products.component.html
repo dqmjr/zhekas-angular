@@ -24,7 +24,7 @@
         <button mat-menu-item (click)="deleteData(product.id)" >Удалить</button>
       </mat-menu>
       <span class="example-spacer"></span>
-      <button mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+      <button mat-fab color="primary" aria-label="Example icon button with a bookmark icon" (click)="productToBasket(product)" type="button">
         <mat-icon>bookmark</mat-icon>
       </button>
     </mat-card-actions>

@@ -5,6 +5,7 @@ export interface IProducts {
   description: string,
   img?: string,
   details: IProductDetails;
+  quantity: number
 }
 export interface IProductDetails {
   "ketchup": boolean,

@@ -1,0 +1,16 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-card {
+  max-width: 400px;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.example-card {
+  margin: 10px;
+  max-width: 300px;
+}

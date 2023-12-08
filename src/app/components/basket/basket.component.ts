@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
-import {SmartTableData} from "../../data/smart-table";
+import {Component, OnInit} from '@angular/core';
+import {IProducts} from "../../models/products";
+import {Subscription} from "rxjs";
+import {ProductsService} from "../../services/products.service";
 
 
 @Component({
@@ -10,57 +11,40 @@ import {SmartTableData} from "../../data/smart-table";
 })
 
 
-export class BasketComponent {
+export class BasketComponent implements OnInit {
+  constructor(private ProductsService: ProductsService) { }
 
-  settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-      },
-      firstName: {
-        title: 'First Name',
-        type: 'string',
-      },
-      lastName: {
-        title: 'Last Name',
-        type: 'string',
-      },
-      username: {
-        title: 'Username',
-        type: 'string',
-      },
-      email: {
-        title: 'E-mail',
-        type: 'string',
-      },
-      age: {
-        title: 'Age',
-        type: 'number',
-      },
-    },
-  };
+  basket: IProducts[];
+  basketSubscription: Subscription;
 
-  source: LocalDataSource = new LocalDataSource();
-
-  constructor(private service: SmartTableData) {
-    const data = this.service.getData();
-    this.source.load(data);
+  ngOnInit(): void {
+    this.basketSubscription = this.ProductsService.getProductsFromBasket().subscribe((data) => {
+      this.basket = data;
+    })
   }
 
+  ngOnDestroy() {
+    if (this.basketSubscription) this.basketSubscription.unsubscribe();
+  }
 
+  increaseItemFromBasket(item: IProducts) {
+    if (item.quantity === 1) {
+      this.ProductsService.deleteProductFromBasket(item.id).subscribe(() => {
+        let idx = this.basket.findIndex((data) => data.id === item.id);
+        this.basket.splice(idx, 1);
+      })
+    }
+    else {
+      item.quantity--;
+      this.ProductsService.UpdateProductToBasket(item).subscribe((data) => {
+
+      })
+    }
+  }
+  decreaseItemFromBasket(item: IProducts) {
+    item.quantity++;
+    this.ProductsService.UpdateProductToBasket(item).subscribe((data) => {
+
+    })
+  }
 }
