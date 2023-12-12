@@ -25,4 +25,7 @@ export class AuthService {
     }
     return throwError(() => new Error('Failed Login'))
   }
+  logOut() {
+    this.router.navigate(['login'])
+  }
 }

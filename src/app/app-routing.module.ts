@@ -8,6 +8,7 @@ import {BasketComponent} from "./components/basket/basket.component";
 import {ProductResolver} from "./services/product.resolver";
 import {LoginComponent} from "./components/login/login.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 
 
@@ -20,7 +21,9 @@ const routes: Routes = [
   { path: 'basket', component: BasketComponent },
   {
     path: 'admin',
-    loadChildren: () => import('./components/admin/admin.module').then((module) => module.AdminModule )
+    canActivate: [AuthGuard],
+    canDeactivate: [AuthGuard],
+    loadChildren: () => import('./components/admin/admin.module').then((m) => m.AdminModule)
   },
   { path: '**', component: NotFoundComponent }
 ];
