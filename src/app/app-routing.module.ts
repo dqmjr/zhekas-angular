@@ -6,15 +6,23 @@ import {ProductsComponent} from "./components/products/products.component";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {BasketComponent} from "./components/basket/basket.component";
 import {ProductResolver} from "./services/product.resolver";
+import {LoginComponent} from "./components/login/login.component";
+import {NotFoundComponent} from "./components/not-found/not-found.component";
 
 
 
 const routes: Routes = [
-  { path: '', component: BaseComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo:'/login', pathMatch: 'full' },
+  // { path: '', component: BaseComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'product/:id', component: ProductDetailsComponent, resolve: { data: ProductResolver } },
   { path: 'basket', component: BasketComponent },
-  { path: '**', redirectTo: '', component: BaseComponent }
+  {
+    path: 'admin',
+    loadChildren: () => import('./components/admin/admin.module').then((module) => module.AdminModule )
+  },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

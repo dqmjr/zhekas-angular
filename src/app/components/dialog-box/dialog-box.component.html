@@ -1,3 +1,4 @@
+<app-header></app-header>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()"  class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Title</mat-label>
@@ -27,3 +28,4 @@
   <button mat-button color="primary" type="submit">{{ isNew ? 'Добавить' : 'Обновить' }}</button>
   <button mat-button color="primary" (click)="onNoClick()" type="button">Отмена</button>
 </form>
+<app-footer></app-footer>

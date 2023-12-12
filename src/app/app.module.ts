@@ -16,10 +16,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatMenuModule} from "@angular/material/menu";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from "@angular/material/menu";
+import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/admin/components/home/home.component';
+import { AdminDashboardComponent } from './components/admin/components/admin-dashboard/admin-dashboard.component';
+import { ContactsComponent } from './components/admin/components/contacts/contacts.component';
+import { ContactsDetailsComponent } from './components/admin/components/contacts-details/contacts-details.component';
+import { AdminHeaderComponent } from "./components/admin/components/header/header.component";
+import { AdminFooterComponent } from "./components/admin/components/footer/footer.component";
 
 
 @NgModule({
@@ -32,6 +40,16 @@ import {MatMenuModule} from "@angular/material/menu";
     ProductsComponent,
     ProductDetailsComponent,
     DialogBoxComponent,
+    LoginComponent,
+    NotFoundComponent,
+    HomeComponent,
+    AdminDashboardComponent,
+    ContactsComponent,
+    ContactsDetailsComponent,
+    HeaderComponent,
+    HeaderComponent,
+    AdminHeaderComponent,
+    AdminFooterComponent,
   ],
   imports: [
     BrowserModule,

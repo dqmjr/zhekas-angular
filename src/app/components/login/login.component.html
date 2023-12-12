@@ -1,0 +1,25 @@
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="submitLogin()" >
+  <h3>Login Here</h3>
+
+  <label for="email">Email</label>
+  <input formControlName="email" type="text" placeholder="Email or Phone" id="email">
+  <p *ngIf="this.loginForm.get('email')?.invalid && this.loginForm?.touched"><small class="text-danger">Email is required</small></p>
+
+  <label for="password">Password</label>
+  <input formControlName="password" type="password" placeholder="Password" id="password">
+  <p *ngIf="this.loginForm.get('password')?.invalid && this.loginForm?.touched"><small class="text-danger">Password is required (min length = 8)</small></p>
+
+  <button [disabled]="loginForm.invalid">Log In</button>
+</form>
+</body>
+
